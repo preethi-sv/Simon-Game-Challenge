@@ -16,6 +16,17 @@ $(document).on("keydown", function() {
   }
 });
 
+// Start the game by double tapping any key
+$(document).on("dblclick", function() {
+  if (!gameStarted) {
+    setTimeout(function() {
+      gameStarted = true;
+      $("#level-title").text("Level 0");
+      nextSequence();
+    }, 100);
+  }
+});
+
 
 // Handle User click (on buttons)
 $(".btn").on("click", function () {
@@ -50,7 +61,7 @@ function checkAnswer(currentLevel) {
     setTimeout(function (){
       $("body").removeClass("game-over");
     }, 200);
-    $("#level-title").text("Game Over, Press Any Key to Restart");
+    $("#level-title").text("Game Over\n Double Tap to Restart");
     startOver();
   }
 
